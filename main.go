@@ -1,15 +1,17 @@
 package main
 
 import (
-	"fmt"
 	"log"
-	"net/http"
 	"os"
+
+	"github.com/gofiber/fiber/v2"
 )
 
 func main() {
 	log.Print("starting server...")
-	http.HandleFunc("/", handler)
+	app := fiber.New()
+
+	registerRoutes(app)
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -17,16 +19,8 @@ func main() {
 		log.Printf("defaulting to port %s", port)
 	}
 
-	log.Printf("listening on port %s", port)
-	if err := http.ListenAndServe(":"+port, nil); err != nil {
+	log.Printf("listening on port: %s", port)
+	if err := app.Listen(":" + port); err != nil {
 		log.Fatal(err)
 	}
-}
-
-func handler(w http.ResponseWriter, r *http.Request) {
-	name := os.Getenv("ENV_NAME")
-	if name == "" {
-		name = "[ENV_NAME not set]"
-	}
-	fmt.Fprintf(w, "Hello %s!\n", name)
 }

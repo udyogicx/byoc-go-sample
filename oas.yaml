@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: Sample GO API
+  version: "1.0"
+  x-logo:
+    url: ""
+paths:
+  /v1/foo:
+    get:
+      tags: []
+      responses:
+        "200":
+          description: success
+    x-last-modified: 1661825119976
+  /v1/bar:
+    get:
+      tags: []
+      responses:
+        "200":
+          description: success
+    x-last-modified: 1661825143241
+  /healthz:
+    x-last-modified: 1661825155906
+components:
+  securitySchemes: {}
+  schemas: {}
+  headers: {}
+  responses: {}
+  parameters: {}
+tags: []
+servers:
+  - url: https://api.example.io
+security: []
