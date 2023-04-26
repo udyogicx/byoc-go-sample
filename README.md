@@ -1,3 +1,3 @@
 # byoc-go-sample
 
-Minimal Go API app
+Minimal Go API app.
